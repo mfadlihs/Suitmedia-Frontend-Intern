@@ -10,7 +10,7 @@ import { IdeaResponse } from "@/types/response/IdeaResponse";
 
 const HomePage = () => {
   const cobaGet = async () => {
-    const res = await axios.get<BaseResponse<IdeaResponse>>(getIdea({}));
+    // const res = await axios.get<BaseResponse<IdeaResponse>>(getIdea({}));
   };
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-[200vh] bg-red-300">
+    <div className="min-h-[200vh]">
       <Header />
       <HomeBanner />
       <HomeContent />

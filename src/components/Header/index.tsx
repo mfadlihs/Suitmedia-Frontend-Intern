@@ -31,8 +31,6 @@ export default function Header() {
       }
 
       setLastScrollTop(currentScrollTop);
-      console.log(isHeaderVisible);
-      console.log(lastScrollTop);
     };
 
     window.addEventListener("scroll", handleScroll);
