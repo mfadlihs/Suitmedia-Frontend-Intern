@@ -1,28 +1,39 @@
 import axios from "axios";
 import { useEffect } from "react";
-import HomeBanner from "./Banner";
+import HomeBanner from "./banner";
 import HomeContent from "./content";
-import HomePagination from "./Pagination";
+import HomePagination from "./pagination";
 import Header from "@/components/Header";
 import { BaseResponse, SuccessResponse } from "@/types/Response";
 import { IdeaResponse } from "@/types/response/IdeaResponse";
 import { useAppContext } from "@/context/AppContext";
+import { toast } from "react-toastify";
 
-const HomePage = ({ data }: { data?: BaseResponse<IdeaResponse> }) => {
+const HomePage = ({
+  data,
+  error,
+}: {
+  data?: BaseResponse<IdeaResponse>;
+  error?: string;
+}) => {
   const [state, setState] = useAppContext();
 
   useEffect(() => {
     if (data != null) setState(data);
   }, [data]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (toast != null) toast.error(error);
+  }, [error]);
 
   return (
     <div className="min-h-[200vh]">
       <Header />
       <HomeBanner />
-      <HomeContent />
-      <HomePagination />
+      <div className="lg:px-32 md:px-24 sm:px-16 px-8">
+        <HomeContent />
+        <HomePagination />
+      </div>
     </div>
   );
 };

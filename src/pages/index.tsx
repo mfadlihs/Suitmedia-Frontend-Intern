@@ -45,13 +45,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   } catch (err) {
-    console.log(err);
-    toast.error("asd");
-    // console.log("error", err);
+    console.log("error", err);
   }
 
   return {
     props: {
+      error: "Too Many Attempts",
       data: null,
     },
   };

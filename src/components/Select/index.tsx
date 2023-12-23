@@ -31,7 +31,7 @@ export default function Select({
 
   const defaultValue = useMemo(() => {
     return options.find((e) => e.value === value);
-  }, [value]);
+  }, [value, options]);
 
   const [current, setCurrent] = useState<SelectValue | undefined>(defaultValue);
 

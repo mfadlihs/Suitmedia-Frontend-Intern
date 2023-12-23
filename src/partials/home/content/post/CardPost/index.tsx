@@ -1,8 +1,6 @@
 import { CardIdea } from "@/types/response/IdeaResponse";
-import Image from "next/image";
-import { style } from "styled-system";
-import { CardContainer } from "./styles";
 import { FormattedDate } from "react-intl";
+import { CardContainer } from "./styles";
 
 const CardPost = ({ data }: { data: CardIdea }) => {
   return (

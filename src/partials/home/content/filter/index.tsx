@@ -1,8 +1,6 @@
 import Select from "@/components/Select";
-import { useParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
-import { ChangeEventHandler, useState } from "react";
-import update from "immutability-helper";
 import { useAppContext } from "@/context/AppContext";
 
 export default function ContentFilter() {
@@ -14,9 +12,13 @@ export default function ContentFilter() {
 
   return (
     <div className="flex justify-between items-center mb-6">
-      <div>
-        Showing {data?.meta.from} - {data?.meta.to} of {data?.meta.total}
-      </div>
+      {!data?.data ? (
+        <div>No Data Showed</div>
+      ) : (
+        <div>
+          Showing {data?.meta.from} - {data?.meta.to} of {data?.meta.total}
+        </div>
+      )}
       <div className="flex gap-4">
         <div className="flex items-center gap-1">
           <div>Show per page:</div>

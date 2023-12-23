@@ -1,9 +1,9 @@
-import ContentFilter from "./Filter";
-import ContentPost from "./Post";
+import ContentFilter from "@/partials/home/content/filter";
+import ContentPost from "@/partials/home/content/post";
 
 export default function HomeContent() {
   return (
-    <div className="lg:px-32 md:px-24 sm:px-16 px-8">
+    <div>
       <ContentFilter />
       <ContentPost />
     </div>
