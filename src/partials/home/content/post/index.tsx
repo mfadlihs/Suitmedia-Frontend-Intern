@@ -1,6 +1,6 @@
 import { useAppContext } from "@/context/AppContext";
 import { useEffect } from "react";
-import CardPost from "./cardPost";
+import CardPost from "@/partials/home/content/post/CardPost";
 
 export default function ContentPost() {
   const [state] = useAppContext();

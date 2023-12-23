@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import LinkButton from "./LinkButton";
 import tw from "twin.macro";
 import { HeaderContainer } from "./styles";
+import Icon from "../Icon";
+import NavMobile from "./NavMobile";
 
 export type PageState =
   | "work"
@@ -12,6 +14,7 @@ export type PageState =
   | "contact";
 
 export default function Header() {
+  const [show, setShow] = useState<boolean>(false);
   const [page, setPage] = useState<PageState>("ideas");
 
   const onChangePage = (state: PageState) => {
@@ -44,12 +47,27 @@ export default function Header() {
     <HeaderContainer
       state={isHeaderVisible}
       isTop={lastScrollTop < 5}
-      className={`px-20 py-4 flex justify-between fixed left-0 right-0 duration-1000 z-30`}
+      className={`lg:px-20 px-6 sm:px-10 md:px-16 py-4 items-center flex justify-between fixed left-0 right-0 duration-1000 z-30`}
     >
       <div>
-        <img src="/images/logo-white.png" height={50} width={120} />
+        <img
+          src="/images/logo-white.png"
+          className="sm:h-10 h-8 md:h-11 lg:h-12"
+        />
       </div>
-      <div className="flex text-slate-50 gap-4 items-center">
+      <div className="md:hidden">
+        <div
+          onClick={() => {
+            console.log("asdasd");
+            setShow(!show);
+          }}
+          style={{ zIndex: 100, position: "relative" }}
+        >
+          <Icon name="menu" size={22} color="white" />
+        </div>
+        <NavMobile active={show} page={page} onUpdate={onChangePage} />
+      </div>
+      <div className="hidden md:flex text-slate-50 gap-4 items-center">
         <LinkButton type="work" state={page} onUpdate={onChangePage}>
           Work
         </LinkButton>

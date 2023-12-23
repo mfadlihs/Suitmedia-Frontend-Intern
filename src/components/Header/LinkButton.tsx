@@ -23,6 +23,7 @@ export default function LinkButton({
       onClick={() => {
         onUpdate(type);
       }}
+      className="text-center text-xl font-medium text-white md:text-base md:font-normal md:text"
     >
       {children}
     </LinkButtonContainer>

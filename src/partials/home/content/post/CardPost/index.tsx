@@ -2,7 +2,7 @@ import { CardIdea } from "@/types/response/IdeaResponse";
 import { FormattedDate } from "react-intl";
 import { CardContainer } from "./styles";
 
-const CardPost = ({ data }: { data: CardIdea }) => {
+export default function CardPost({ data }: { data: CardIdea }) {
   return (
     <CardContainer className="bg-white  rounded-md shadow-lg">
       <img
@@ -14,7 +14,7 @@ const CardPost = ({ data }: { data: CardIdea }) => {
         loading="lazy"
       />
       <div className="px-3 py-4">
-        <div className="text-sm text-slate-700 font-medium">
+        <div className="md:text-sm text-xs text-slate-700 font-medium">
           <FormattedDate
             value={data.created_at}
             day="2-digit"
@@ -22,10 +22,10 @@ const CardPost = ({ data }: { data: CardIdea }) => {
             year="numeric"
           />
         </div>
-        <div className="title text-base font-medium">{data.title}</div>
+        <div className="title md:text-base text-sm font-medium">
+          {data.title}
+        </div>
       </div>
     </CardContainer>
   );
-};
-
-export default CardPost;
+}
