@@ -3,7 +3,7 @@ import ContentPost from "./post";
 
 export default function HomeContent() {
   return (
-    <div>
+    <div className="px-32">
       <ContentFilter />
       <ContentPost />
     </div>

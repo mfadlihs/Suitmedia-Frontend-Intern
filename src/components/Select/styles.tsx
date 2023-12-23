@@ -6,7 +6,7 @@ type ContainerProps = {
 };
 
 export const Container = styled.div<ContainerProps>`
-  padding: 8px 12px;
+  padding: 4px 10px;
   width: ${({ width }) => width};
   background-color: white;
   border-radius: 16px;
