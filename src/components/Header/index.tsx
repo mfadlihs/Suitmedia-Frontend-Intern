@@ -46,7 +46,7 @@ export default function Header() {
     <HeaderContainer
       state={isHeaderVisible}
       isTop={lastScrollTop < 5}
-      className={`px-20 py-4 flex justify-between fixed left-0 right-0 duration-1000 `}
+      className={`px-20 py-4 flex justify-between fixed left-0 right-0 duration-1000 z-30`}
     >
       <div>
         <img src="/images/logo-white.png" height={50} width={120} />

@@ -13,3 +13,12 @@ body {
     @apply ease-in-out duration-500 transition-all;
   }
 }
+
+.jumbotron {
+  background-image: url("../../public/images/banner.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: rgb(255, 255, 255);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 0% 100%);
+}
