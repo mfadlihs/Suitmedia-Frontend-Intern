@@ -1,23 +1,18 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import { useEffect } from "react";
+import Loading from "@/components/Loading";
 import axios from "axios";
+import { NextPage } from "next";
+import dynamic from "next/dynamic";
 
-const inter = Inter({ subsets: ["latin"] });
+const HomePage: NextPage = dynamic(() => import("@/partials/home"), {
+  loading: () => <Loading />,
+});
 
-export default function Home() {
-  useEffect(() => {
-    axios
-      .get(
-        "api/ideas?page[number]=1&page[size]=10&append[]=small_image&append[]=medium_image&sort=-published_at"
-      )
-      .then((e) => {
-        console.log(e);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
+export const getServerSideProps = async () => {
+  // TODO: ADD SSR FETCH DATA HERE
 
-  return <div></div>;
-}
+  return {
+    props: {},
+  };
+};
+
+export default HomePage;

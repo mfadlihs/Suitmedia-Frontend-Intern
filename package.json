@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/styled": "^11.11.0",
     "axios": "^1.6.2",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "twin.macro": "^3.4.0"
   },
   "devDependencies": {
     "@types/node": "^20",
