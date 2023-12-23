@@ -18,7 +18,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="min-h-[200vh] bg-red-300">
       <Header />
       <HomeBanner />
       <HomeContent />
