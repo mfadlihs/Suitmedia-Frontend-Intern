@@ -27,7 +27,7 @@ const HomePage = ({
   }, [error]);
 
   return (
-    <div className="min-h-[200vh]">
+    <div>
       <Header />
       <HomeBanner />
       <div className="lg:px-32 md:px-24 sm:px-16 px-8">

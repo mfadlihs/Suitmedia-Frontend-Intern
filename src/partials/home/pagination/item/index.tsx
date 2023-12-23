@@ -24,7 +24,10 @@ const IconPagination = ({
   }
 };
 
-const ItemPagination = ({ isActive, label }: ItemPaginationProps) => {
+export default function ItemPagination({
+  isActive,
+  label,
+}: ItemPaginationProps) {
   const router = useRouter();
 
   return (
@@ -44,6 +47,4 @@ const ItemPagination = ({ isActive, label }: ItemPaginationProps) => {
       <IconPagination>{label}</IconPagination>
     </ItemContainer>
   );
-};
-
-export default ItemPagination;
+}
