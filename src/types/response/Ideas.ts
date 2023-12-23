@@ -5,7 +5,7 @@ export interface getIdeaParams {
   sort?: "published_at" | "-published_at";
 }
 
-export const getIdea = (param?: getIdeaParams) => {
+export function getIdea(param?: getIdeaParams) {
   const params = [];
   if (param?.pageNumber != null)
     params.push(`page[number]=${param?.pageNumber}`);
@@ -20,4 +20,4 @@ export const getIdea = (param?: getIdeaParams) => {
   const paramString = params.join("&");
 
   return `api/ideas?${paramString}`;
-};
+}
