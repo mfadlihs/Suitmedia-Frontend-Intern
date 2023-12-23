@@ -1,21 +1,38 @@
 import Select from "@/components/Select";
+import { useParams, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { ChangeEventHandler, useState } from "react";
+import update from "immutability-helper";
+import { useAppContext } from "@/context/AppContext";
 
 export default function ContentFilter() {
+  const [data] = useAppContext();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const size = searchParams.get("size") ?? 10;
+  const sort = searchParams.get("sort") ?? "newest";
+
   return (
-    <div className="flex justify-between">
-      <div>Showing 1 - 10 of 100</div>
+    <div className="flex justify-between items-center mb-6">
+      <div>
+        Showing {data?.meta.from} - {data?.meta.to} of {data?.meta.total}
+      </div>
       <div className="flex gap-4">
         <div className="flex items-center gap-1">
           <div>Show per page:</div>
           <Select
             width="150px"
-            value={10}
+            value={Number(size)}
+            onChange={(e) => {
+              router.push({
+                pathname: router.pathname,
+                query: { ...router.query, size: e.toString() },
+              });
+            }}
             options={[
               { label: "10", value: 10 },
               { label: "20", value: 20 },
-              { label: "30", value: 20 },
-              { label: "40", value: 40 },
+              { label: "50", value: 50 },
             ]}
           />
         </div>
@@ -23,7 +40,13 @@ export default function ContentFilter() {
           <div>Sort by:</div>
           <Select
             width="150px"
-            value={"newest"}
+            value={sort}
+            onChange={(e) => {
+              router.push({
+                pathname: router.pathname,
+                query: { ...router.query, sort: e.toString() },
+              });
+            }}
             options={[
               { label: "Newest", value: "newest" },
               { label: "Oldest", value: "oldest" },

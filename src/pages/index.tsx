@@ -1,46 +1,58 @@
 import Loading from "@/components/Loading";
+import { BaseResponse, SuccessResponse } from "@/types/Response";
+import { IdeaResponse } from "@/types/response/IdeaResponse";
 import { getIdea } from "@/types/response/Ideas";
 import { convertParam } from "@/utils/convertParams";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { GetServerSideProps, NextPage } from "next";
 import dynamic from "next/dynamic";
 import { useParams } from "next/navigation";
+import { toast } from "react-toastify";
 
 const HomePage: NextPage = dynamic(() => import("@/partials/home"), {
   loading: () => <Loading />,
 });
 
-type Props = { host: string | null };
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { page, size, sort: querySort } = context.query;
 
-  const pageNumber = convertParam(page);
-  const pageSize = convertParam(size);
+  const pageNumber = convertParam(page) ?? "1";
+  const pageSize = convertParam(size) ?? "10";
+
   const sort: "published_at" | "-published_at" | undefined =
-    querySort === "published_at" || querySort === "-published_at"
-      ? querySort
+    querySort === "newest"
+      ? "-published_at"
+      : querySort === "oldest"
+      ? "published_at"
       : undefined;
 
-  axios
-    .get(
+  console.log(pageSize);
+
+  try {
+    const res = await axios.get<BaseResponse<IdeaResponse>>(
       `http://${context.req.headers.host}/${getIdea({
         pageNumber,
         pageSize,
         sort,
         append: ["small_image", "medium_image"],
       })}`
-    )
-    .then((e) => {
-      // console.log(e.config.params);
-    })
-    .catch((e) => {
-      // console.log(e);
-    });
+    );
+    toast.success("asdasd");
+
+    return {
+      props: {
+        data: res.data,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+    toast.error("asd");
+    // console.log("error", err);
+  }
 
   return {
     props: {
-      host: context.req.headers.host || null,
+      data: null,
     },
   };
 };

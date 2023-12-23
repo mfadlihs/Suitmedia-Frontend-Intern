@@ -1,4 +1,4 @@
-interface CardIdea {
+export interface CardIdea {
   id: number;
   slug: string;
   title: string;
