@@ -30,7 +30,7 @@ const HomePage = ({
     <div>
       <Header />
       <HomeBanner />
-      <div className="lg:px-32 md:px-24 sm:px-16 px-8">
+      <div className="lg:px-32 md:px-24 sm:px-10 px-4">
         <HomeContent />
         <HomePagination />
       </div>

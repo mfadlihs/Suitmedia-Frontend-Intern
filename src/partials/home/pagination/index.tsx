@@ -10,7 +10,7 @@ export default function HomePagination() {
   }, [data]);
 
   return (
-    <div className="mt-8 flex flex-wrap items-center gap-x-2 justify-center">
+    <div className="mt-8 mb-8 flex flex-wrap items-center gap-x-2 justify-center">
       {meta?.links.map((e) => (
         <ItemPagination key={e.label} label={e.label} isActive={e.active} />
       ))}

@@ -42,7 +42,7 @@ export default function ItemPagination({
       }}
       className={`${
         isActive && "bg-orange text-slate-100 font-medium"
-      } flex items-center cursor-pointer justify-center p-2 aspect-square w-8 h-8 rounded-lg`}
+      } flex items-center text-xs md:text-base cursor-pointer justify-center p-2 aspect-square md:w-8 md:h-8 w-6 h-6 rounded-lg`}
     >
       <IconPagination>{label}</IconPagination>
     </ItemContainer>
