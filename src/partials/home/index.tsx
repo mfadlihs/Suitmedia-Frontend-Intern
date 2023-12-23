@@ -10,7 +10,7 @@ import { IdeaResponse } from "@/types/response/IdeaResponse";
 
 const HomePage = () => {
   const cobaGet = async () => {
-    const res = await axios.get<BaseResponse<IdeaResponse>>(getIdea({}));
+    // const res = await axios.get<BaseResponse<IdeaResponse>>(getIdea({}));
   };
 
   useEffect(() => {

@@ -1,17 +1,18 @@
+export type AppendIdeaProps = "small_image" | "medium_image";
+
 export interface getIdeaParams {
-  pageNumber?: number;
-  pageSize?: number;
+  pageNumber?: string;
+  pageSize?: string;
   append?: ("small_image" | "medium_image")[];
   sort?: "published_at" | "-published_at";
 }
 
 export function getIdea(param?: getIdeaParams) {
   const params = [];
-  if (param?.pageNumber != null)
-    params.push(`page[number]=${param?.pageNumber}`);
-  if (param?.pageSize != null) params.push(`page[size]=${param?.pageSize}`);
-  if (param?.sort != null) params.push(`sort=${param?.sort}`);
-  if (param?.append != null) {
+  param?.pageNumber && params.push(`page[number]=${param?.pageNumber}`);
+  param?.pageSize && params.push(`page[size]=${param?.pageSize}`);
+  param?.sort && params.push(`sort=${param?.sort}`);
+  if (!!param?.append) {
     param?.append.forEach((e) => {
       params.push(`append[]=${e}`);
     });
